@@ -1,0 +1,2 @@
+rootProject.name='PokeDex-vAlt'
+include ':app'
