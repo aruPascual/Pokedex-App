@@ -5,7 +5,8 @@ The project has been implemented following the tutorial of [EDMT Dev](https://ww
 
 Some screenshots:
 
-_Pokemon List_ ![alt text](https://github.com/aruPascual/Pokedex-App/blob/master/Screenshots/PokemonList.png)
+_Pokemon List_
 <img src="https://github.com/aruPascual/Pokedex-App/blob/master/Screenshots/PokemonList.png" width=300>
 
-_Pokemon Detail_ ![alt text](https://github.com/aruPascual/Pokedex-App/blob/master/Screenshots/PokemonDetail_Charmander.png)
+_Pokemon Detail_
+<img src="https://github.com/aruPascual/Pokedex-App/blob/master/Screenshots/PokemonDetail_Charmander.png" width=300>
