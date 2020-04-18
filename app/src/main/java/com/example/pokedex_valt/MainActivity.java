@@ -48,6 +48,30 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    BroadcastReceiver showEvolution =  new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().toString().equals(Common.KEY_NUM_EVOLUTION)){
+                //replace fragment
+                Fragment detailFragment = PokemonDetail.getInstance();
+                Bundle bundle = new Bundle();
+                String num = intent.getStringExtra("num");
+                bundle.putString("num",num);
+                detailFragment.setArguments(bundle);
+
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.remove(detailFragment); //remove current fragment
+                fragmentTransaction.replace(R.id.list_pokemon_fragment, detailFragment);
+                fragmentTransaction.addToBackStack("detail");
+                fragmentTransaction.commit();
+
+                //set Pokemon name for Toolbar
+                Pokemon pokemon = Common.findPokemonByNum(num);
+                toolbar.setTitle(pokemon.getName());
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
         //register broadcast
         LocalBroadcastManager.getInstance(this).registerReceiver(showDetail, new IntentFilter(Common.KEY_ENABLE_HOME));
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(showEvolution, new IntentFilter(Common.KEY_NUM_EVOLUTION));
     }
 
     @Override
